@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>wendsell · projects</title>
-<meta name="description" content="Things wendsell has built: 3D printing tools and guides, a World of Warcraft addon fork, and a cursed hot dog generator.">
+<meta name="description" content="Things wendsell has built: 3D printing tools and guides, Tesla P100 fan control for a Supermicro homelab, a World of Warcraft addon fork, and a cursed hot dog generator.">
 <meta property="og:title" content="wendsell · projects">
-<meta property="og:description" content="3D printing tools and guides, a WoW addon, and the occasional cursed hot dog.">
+<meta property="og:description" content="3D printing tools and guides, homelab fan control, a WoW addon, and the occasional cursed hot dog.">
 <link rel="canonical" href="https://wendsell.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23232a33'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%23ffb547'%3Ew%3C/text%3E%3C/svg%3E">
 <style>
@@ -41,7 +41,7 @@
   section { padding:28px 0 12px; }
   h2 { display:flex; align-items:center; gap:10px; font-size:22px; margin:0 0 16px; letter-spacing:-.01em; }
   h2::before { content:""; width:12px; height:12px; border-radius:3px; background:var(--c); }
-  #printing { --c:var(--c-print); } #tools { --c:var(--c-tool); } #wow { --c:var(--c-wow); } #fun { --c:var(--c-fun); }
+  #printing { --c:var(--c-print); } #homelab { --c:var(--c-tool); } #tools { --c:var(--c-tool); } #wow { --c:var(--c-wow); } #fun { --c:var(--c-fun); }
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 20px 16px;
           box-shadow:var(--shadow); display:flex; flex-direction:column; border-top:3px solid var(--c); }
@@ -68,9 +68,9 @@
   <div class="wrap">
     <p class="hello">Projects</p>
     <h1>wendsell</h1>
-    <p class="intro">Things I've built: tools and guides for 3D printing, a World of Warcraft addon, and one cursed hot dog generator.</p>
+    <p class="intro">Things I've built: tools and guides for 3D printing, homelab fan control for a passive datacenter GPU, a World of Warcraft addon, and one cursed hot dog generator.</p>
     <nav class="jump" aria-label="Sections">
-      <a href="#printing">3D printing</a><a href="#wow">World of Warcraft</a><a href="#fun">Just for fun</a>
+      <a href="#printing">3D printing</a><a href="#homelab">Homelab</a><a href="#wow">World of Warcraft</a><a href="#fun">Just for fun</a>
     </nav>
   </div>
 </header>
@@ -109,6 +109,22 @@
         <div class="links">
           <a class="primary" href="https://wendsell.github.io/P1S-BMCU-Lifeline/">Read the guide</a>
           <a href="https://github.com/wendsell/P1S-BMCU-Lifeline">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="homelab">
+    <h2>Homelab</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Radiatore</h3>
+        <p class="what">Fan control · guide &amp; scripts</p>
+        <p class="desc">Keeps a passively cooled Tesla P100 alive in a Supermicro server when the GPU is passed through to a VM. smfc reads the GPU's temperature from inside the VM over a locked-down SSH key, and any failure sends the fans to 100%.</p>
+        <ul class="chips"><li>Proxmox</li><li>Bash</li><li class="free">Free software · GPL-3.0</li></ul>
+        <div class="links">
+          <a class="primary" href="https://wendsell.github.io/radiatore/">Read the guide</a>
+          <a href="https://github.com/wendsell/radiatore">Source</a>
         </div>
       </article>
     </div>
