@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Story of Satoa, the Draenei Shaman">
+    <title>The Mystery of Satoa</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #1a1a1a;
+            color: #ffd27f;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #303030;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            border-bottom: 4px solid #ffd27f;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #3b2b1e;
+            border-radius: 10px;
+            border: 2px solid #8c6c4b;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+            color: #ffd27f;
+            font-size: 1.2em;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ffd27f;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            color: #fffdd0;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #303030;
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            border-top: 4px solid #ffd27f;
+        }
+
+        .footer-text {
+            color: #ccc;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: #ffd27f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Audio Player Styles */
+        .audio-player {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .play-pause-btn {
+            background-color: #ffd27f;
+            color: #303030;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .play-pause-btn:hover {
+            background-color: #f4c542;
+        }
+
+        .timeline {
+            width: 300px;
+            height: 10px;
+            background-color: #555;
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .timeline-fill {
+            background-color: #ffd27f;
+            height: 100%;
+            width: 0;
+            border-radius: 5px;
+        }
+
+        .time-display {
+            color: #ffd27f;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>The Mystery of Satoa</h1>
+    <p>A World of Warcraft Story</p>
+
+    <!-- Custom Audio Player -->
+    <div class="audio-player">
+        <!-- Play/Pause Button -->
+        <button class="play-pause-btn" id="playPauseBtn">Play</button>
+
+        <!-- Timeline -->
+        <div class="timeline" id="timeline">
+            <div class="timeline-fill" id="timelineFill"></div>
+        </div>
+
+        <!-- Time Display -->
+        <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="audioPlayer">
+        <source src="satoa.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</header>
+
+<div class="content">
+    <h2>Once upon a time in the magical world of Azeroth...</h2>
+    <p>
+        A strange mystery spread through the streets of Dalaran. People were buzzing about a new hero who had just shown up. His name was <span class="highlight">Satoa</span>, a Draenei Shaman, but nobody seemed to know much about him.
+    </p>
+    <p>
+        "Who the <strong>fuck</strong> is Satoa?" everyone kept asking.
+    </p>
+    <p>
+        Among the curious was <span class="highlight">Guelder</span>, a sharp-eyed hunter known for his keen instincts. He had hunted across the wilds of Azeroth, but a Draenei Shaman with no backstory? That was more of a puzzle than anything he'd tracked before.
+    </p>
+    <p>
+        Guelder was relaxing in a corner of the tavern, cleaning his bow, and listening to the chatter.
+    </p>
+    <p>
+        "Did you hear about Satoa? That dude took down Patchwerk like it was nothin'!"
+    </p>
+    <p>
+        "Yeah, but seriously, who <em>is</em> this guy?"
+    </p>
+    <p>
+        Guelder smirked. "Guess I’m not the only one tryin’ to figure that out."
+    </p>
+    <p>
+        Meanwhile, down in the streets, the abomination known as Patchwerk was causing chaos. Somehow, the brute had escaped from Naxxramas and was smashing his way through Dalaran. Warriors and mages tried to stop him, but Patchwerk’s raw power was too much.
+    </p>
+    <p>
+        Suddenly, the skies darkened, and a gust of wind swept through the streets. Lightning cracked, and from the heart of the storm came a tall Draenei, his eyes glowing with energy. <span class="highlight">Satoa</span> had arrived.
+    </p>
+    <p>
+        With a calm confidence, Satoa raised his hand toward the sky. "Spirits, let’s show this guy what’s up." The wind howled, and a wave of water crashed into Patchwerk, knocking him off balance. "Catch this," Satoa said with a grin, as a bolt of lightning slammed into the abomination, dropping him to the ground.
+    </p>
+    <p>
+        The streets went quiet, everyone in awe.
+    </p>
+    <p>
+        Guelder, watching from nearby, jumped down, landing smoothly. "That was some serious power. But who <em>are</em> you, man?"
+    </p>
+    <p>
+        <span class="highlight">Jaina Proudmoore</span> arrived, just catching the end of the battle. "That was incredible, Satoa. But I have to ask… who exactly are you? No one seems to know your name, yet you fight like a seasoned hero."
+    </p>
+    <p>
+        Satoa chuckled, resting his hammer on his shoulder. "Ain’t much to tell. I’m a Draenei Shaman, been traveling with my people, keepin' to myself. I don’t do all this for attention—I’m just out here to do my part, y’know?"
+    </p>
+    <p>
+        Guelder raised an eyebrow. "Alright, but why now? What made you step up?"
+    </p>
+    <p>
+        Satoa shrugged, his voice calm. "The elements been callin’. Azeroth’s still hurtin’ even after the Lich King’s fall. I ain’t lookin’ for glory—I’m just here to help keep things in balance."
+    </p>
+    <p>
+        Jaina nodded, smiling. "Well, I’m glad you're here, Satoa. Azeroth needs more heroes like you."
+    </p>
+    <p>
+        Guelder crossed his arms, giving Satoa a long look. "You got skills, shaman. I’ll be watchin', but I’m glad you’re on our side."
+    </p>
+    <p>
+        Satoa grinned. "Don’t worry, man. I got this."
+    </p>
+    <p>
+        And so, the mystery of Satoa was solved—not by digging into his past, but by the way he handled himself in the moment. Even Guelder had to admit, the Draenei Shaman knew what he was doing. From that day forward, everyone in Dalaran knew who Satoa was: a quiet hero, guided by the spirits, always ready to step in when Azeroth needed him most.
+    </p>
+    <p>
+        <strong>The End</strong>
+    </p>
+
+    <!-- Centered Image -->
+    <div style="text-align: center;">
+        <img src="Shaman_Crest.webp" alt="Shaman Crest" style="max-width: 200px;">
+    </div>
+
+    <!-- Embedded YouTube Playlist -->
+    <h2 style="text-align: center;">For more insane guild nonsense check out this playlist</h2>
+    <div style="text-align: center;">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLQSakYhtclMZDhF6Kf2zL1f9cfXY1U3z5" 
+        title="YouTube Playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<footer>
+    <p class="footer-text">Wendsell with Two L's</p>
+</footer>
+
+<script>
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const timeline = document.getElementById('timeline');
+    const timelineFill = document.getElementById('timelineFill');
+    const timeDisplay = document.getElementById('timeDisplay');
+
+    // Play/Pause Toggle
+    playPauseBtn.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playPauseBtn.textContent = 'Pause';
+        } else {
+            audioPlayer.pause();
+            playPauseBtn.textContent = 'Play';
+        }
+    });
+
+    // Update Timeline and Time Display
+    audioPlayer.addEventListener('timeupdate', () => {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        timelineFill.style.width = `${progress}%`;
+
+        const currentTime = formatTime(audioPlayer.currentTime);
+        const duration = formatTime(audioPlayer.duration);
+        timeDisplay.textContent = `${currentTime} / ${duration}`;
+    });
+
+    // Timeline Click
+    timeline.addEventListener('click', (e) => {
+        const timelineWidth = timeline.offsetWidth;
+        const clickX = e.offsetX;
+        const duration = audioPlayer.duration;
+
+        audioPlayer.currentTime = (clickX / timelineWidth) * duration;
+    });
+
+    // Format Time Function
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+</script>
+
+</body>
+</html>

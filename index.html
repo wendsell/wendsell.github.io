@@ -1,276 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Story of Satoa, the Draenei Shaman">
-    <title>The Mystery of Satoa</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            background-color: #1a1a1a;
-            color: #ffd27f;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wendsell · projects</title>
+<meta name="description" content="Things wendsell has built: 3D printing tools and guides, an offline subtitle maker, a World of Warcraft addon fork, and a cursed hot dog generator.">
+<meta property="og:title" content="wendsell · projects">
+<meta property="og:description" content="3D printing tools and guides, desktop tools, a WoW addon, and the occasional cursed hot dog.">
+<link rel="canonical" href="https://wendsell.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23232a33'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%23ffb547'%3Ew%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg:#f7f7f5; --fg:#1a1d21; --muted:#5f6670; --card:#ffffff; --line:#e3e3df; --chip:#f0f0ec;
+    --accent:#d9822b; --link:#b06516;
+    --c-print:#0f9b8e; --c-tool:#4a6fd6; --c-wow:#8a4fd6; --c-fun:#d9822b;
+    --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#111316; --fg:#e8eaed; --muted:#9aa1ab; --card:#181b1f; --line:#272b31; --chip:#21252b;
+      --accent:#ffb547; --link:#ffc46e;
+      --c-print:#2ed3c0; --c-tool:#7ea2ff; --c-wow:#b48cff; --c-fun:#ffb547;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  a { color:var(--link); text-underline-offset:2px; }
+  .wrap { max-width:1060px; margin:0 auto; padding:0 16px; }
 
-        header {
-            background-color: #303030;
-            padding: 20px;
-            text-align: center;
-            color: #fff;
-            border-bottom: 4px solid #ffd27f;
-        }
+  header { padding:72px 0 40px; }
+  .hello { font-size:14px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 10px; }
+  h1 { font-size:clamp(40px,7vw,68px); line-height:1; margin:0 0 16px; letter-spacing:-.03em; }
+  .intro { font-size:20px; color:var(--muted); max-width:640px; margin:0; }
+  .jump { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .jump a { text-decoration:none; font-size:14px; font-weight:700; color:var(--fg); background:var(--chip);
+            border:1px solid var(--line); border-radius:999px; padding:5px 12px; }
+  .jump a:hover { border-color:var(--accent); }
 
-        .content {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #3b2b1e;
-            border-radius: 10px;
-            border: 2px solid #8c6c4b;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
-            color: #ffd27f;
-            font-size: 1.2em;
-        }
+  section { padding:28px 0 12px; }
+  h2 { display:flex; align-items:center; gap:10px; font-size:22px; margin:0 0 16px; letter-spacing:-.01em; }
+  h2::before { content:""; width:12px; height:12px; border-radius:3px; background:var(--c); }
+  #printing { --c:var(--c-print); } #tools { --c:var(--c-tool); } #wow { --c:var(--c-wow); } #fun { --c:var(--c-fun); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 20px 16px;
+          box-shadow:var(--shadow); display:flex; flex-direction:column; border-top:3px solid var(--c); }
+  .card h3 { margin:0 0 4px; font-size:19px; letter-spacing:-.01em; }
+  .card .what { margin:0 0 10px; font-size:13px; font-weight:700; color:var(--c); text-transform:uppercase; letter-spacing:.06em; }
+  .card p.desc { margin:0 0 14px; color:var(--muted); font-size:15.5px; flex:1; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; padding:0; list-style:none; }
+  .chips li { font-size:12.5px; font-weight:650; background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:1px 8px; color:var(--muted); }
+  .chips li.free { color:var(--fg); }
+  .links { display:flex; flex-wrap:wrap; gap:8px 14px; font-size:15px; font-weight:700; }
+  .links a { text-decoration:none; }
+  .links a:hover { text-decoration:underline; }
+  .links a.primary { color:var(--fg); background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:4px 11px; margin:-4px 0; }
+  .links a.primary:hover { border-color:var(--c); text-decoration:none; }
 
-        h1, h2 {
-            text-align: center;
-            color: #ffd27f;
-        }
-
-        p {
-            line-height: 1.6;
-            font-size: 1.1em;
-        }
-
-        .highlight {
-            color: #fffdd0;
-            font-weight: bold;
-        }
-
-        footer {
-            background-color: #303030;
-            text-align: center;
-            padding: 20px;
-            color: #999;
-            border-top: 4px solid #ffd27f;
-        }
-
-        .footer-text {
-            color: #ccc;
-            font-size: 0.9em;
-        }
-
-        a {
-            color: #ffd27f;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Audio Player Styles */
-        .audio-player {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .play-pause-btn {
-            background-color: #ffd27f;
-            color: #303030;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-
-        .play-pause-btn:hover {
-            background-color: #f4c542;
-        }
-
-        .timeline {
-            width: 300px;
-            height: 10px;
-            background-color: #555;
-            border-radius: 5px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .timeline-fill {
-            background-color: #ffd27f;
-            height: 100%;
-            width: 0;
-            border-radius: 5px;
-        }
-
-        .time-display {
-            color: #ffd27f;
-            font-size: 1em;
-        }
-    </style>
+  footer { border-top:1px solid var(--line); margin-top:44px; padding:26px 0 44px; color:var(--muted); font-size:14px; }
+  footer a { color:var(--muted); }
+  @media (max-width: 520px) { body { font-size:16px; } header { padding-top:48px; } .grid { grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
 
 <header>
-    <h1>The Mystery of Satoa</h1>
-    <p>A World of Warcraft Story</p>
-
-    <!-- Custom Audio Player -->
-    <div class="audio-player">
-        <!-- Play/Pause Button -->
-        <button class="play-pause-btn" id="playPauseBtn">Play</button>
-
-        <!-- Timeline -->
-        <div class="timeline" id="timeline">
-            <div class="timeline-fill" id="timelineFill"></div>
-        </div>
-
-        <!-- Time Display -->
-        <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
-    </div>
-
-    <!-- Hidden Audio Element -->
-    <audio id="audioPlayer">
-        <source src="satoa.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+  <div class="wrap">
+    <p class="hello">Projects</p>
+    <h1>wendsell</h1>
+    <p class="intro">Things I've built: tools and guides for 3D printing, an offline subtitle maker, a World of Warcraft addon, and one cursed hot dog generator.</p>
+    <nav class="jump" aria-label="Sections">
+      <a href="#printing">3D printing</a><a href="#tools">Desktop tools</a><a href="#wow">World of Warcraft</a><a href="#fun">Just for fun</a>
+    </nav>
+  </div>
 </header>
 
-<div class="content">
-    <h2>Once upon a time in the magical world of Azeroth...</h2>
-    <p>
-        A strange mystery spread through the streets of Dalaran. People were buzzing about a new hero who had just shown up. His name was <span class="highlight">Satoa</span>, a Draenei Shaman, but nobody seemed to know much about him.
-    </p>
-    <p>
-        "Who the <strong>fuck</strong> is Satoa?" everyone kept asking.
-    </p>
-    <p>
-        Among the curious was <span class="highlight">Guelder</span>, a sharp-eyed hunter known for his keen instincts. He had hunted across the wilds of Azeroth, but a Draenei Shaman with no backstory? That was more of a puzzle than anything he'd tracked before.
-    </p>
-    <p>
-        Guelder was relaxing in a corner of the tavern, cleaning his bow, and listening to the chatter.
-    </p>
-    <p>
-        "Did you hear about Satoa? That dude took down Patchwerk like it was nothin'!"
-    </p>
-    <p>
-        "Yeah, but seriously, who <em>is</em> this guy?"
-    </p>
-    <p>
-        Guelder smirked. "Guess I’m not the only one tryin’ to figure that out."
-    </p>
-    <p>
-        Meanwhile, down in the streets, the abomination known as Patchwerk was causing chaos. Somehow, the brute had escaped from Naxxramas and was smashing his way through Dalaran. Warriors and mages tried to stop him, but Patchwerk’s raw power was too much.
-    </p>
-    <p>
-        Suddenly, the skies darkened, and a gust of wind swept through the streets. Lightning cracked, and from the heart of the storm came a tall Draenei, his eyes glowing with energy. <span class="highlight">Satoa</span> had arrived.
-    </p>
-    <p>
-        With a calm confidence, Satoa raised his hand toward the sky. "Spirits, let’s show this guy what’s up." The wind howled, and a wave of water crashed into Patchwerk, knocking him off balance. "Catch this," Satoa said with a grin, as a bolt of lightning slammed into the abomination, dropping him to the ground.
-    </p>
-    <p>
-        The streets went quiet, everyone in awe.
-    </p>
-    <p>
-        Guelder, watching from nearby, jumped down, landing smoothly. "That was some serious power. But who <em>are</em> you, man?"
-    </p>
-    <p>
-        <span class="highlight">Jaina Proudmoore</span> arrived, just catching the end of the battle. "That was incredible, Satoa. But I have to ask… who exactly are you? No one seems to know your name, yet you fight like a seasoned hero."
-    </p>
-    <p>
-        Satoa chuckled, resting his hammer on his shoulder. "Ain’t much to tell. I’m a Draenei Shaman, been traveling with my people, keepin' to myself. I don’t do all this for attention—I’m just out here to do my part, y’know?"
-    </p>
-    <p>
-        Guelder raised an eyebrow. "Alright, but why now? What made you step up?"
-    </p>
-    <p>
-        Satoa shrugged, his voice calm. "The elements been callin’. Azeroth’s still hurtin’ even after the Lich King’s fall. I ain’t lookin’ for glory—I’m just here to help keep things in balance."
-    </p>
-    <p>
-        Jaina nodded, smiling. "Well, I’m glad you're here, Satoa. Azeroth needs more heroes like you."
-    </p>
-    <p>
-        Guelder crossed his arms, giving Satoa a long look. "You got skills, shaman. I’ll be watchin', but I’m glad you’re on our side."
-    </p>
-    <p>
-        Satoa grinned. "Don’t worry, man. I got this."
-    </p>
-    <p>
-        And so, the mystery of Satoa was solved—not by digging into his past, but by the way he handled himself in the moment. Even Guelder had to admit, the Draenei Shaman knew what he was doing. From that day forward, everyone in Dalaran knew who Satoa was: a quiet hero, guided by the spirits, always ready to step in when Azeroth needed him most.
-    </p>
-    <p>
-        <strong>The End</strong>
-    </p>
-
-    <!-- Centered Image -->
-    <div style="text-align: center;">
-        <img src="Shaman_Crest.webp" alt="Shaman Crest" style="max-width: 200px;">
+<main class="wrap">
+  <section id="printing">
+    <h2>3D printing</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Spoolghetti</h3>
+        <p class="what">Browser extension</p>
+        <p class="desc">True price per kg on Amazon filament searches. Best deals sorted to the top, storage boxes, dryers and sample packs filtered out.</p>
+        <ul class="chips"><li>Chrome &amp; userscript</li><li>JavaScript</li><li class="free">Free software · GPL-3.0</li></ul>
+        <div class="links">
+          <a class="primary" href="https://wendsell.github.io/spoolghetti/">Website</a>
+          <a href="https://chromewebstore.google.com/detail/mbclhfbdlfjfhlgcmbkhikdodmiidebc">Chrome Web Store</a>
+          <a href="https://github.com/wendsell/spoolghetti">Source</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>simplyusage</h3>
+        <p class="what">Self-hosted service</p>
+        <p class="desc">Keeps SimplyPrint spool weights accurate for Bambu Lab prints sent from Bambu Studio or Orca. Per-color usage, deducted from the right AMS slot.</p>
+        <ul class="chips"><li>Docker · x86 &amp; ARM</li><li>Python</li><li class="free">Free software · GPL-3.0</li></ul>
+        <div class="links">
+          <a class="primary" href="https://wendsell.github.io/simplyusage/">Website</a>
+          <a href="https://wendsell.github.io/simplyusage/setup.html">Setup guide</a>
+          <a href="https://github.com/wendsell/simplyusage">Source</a>
+        </div>
+      </article>
+      <article class="card">
+        <h3>P1S BMCU Lifeline</h3>
+        <p class="what">Field guide</p>
+        <p class="desc">Getting the BMCU 370C DM working reliably on a Bambu Lab P1S: firmware, PTFE routing, rewinders, matte PLA, and a troubleshooting order that works.</p>
+        <ul class="chips"><li>Guide</li><li>Living document</li><li class="free">GPL-3.0</li></ul>
+        <div class="links">
+          <a class="primary" href="https://wendsell.github.io/P1S-BMCU-Lifeline/">Read the guide</a>
+          <a href="https://github.com/wendsell/P1S-BMCU-Lifeline">GitHub</a>
+        </div>
+      </article>
     </div>
+  </section>
 
-    <!-- Embedded YouTube Playlist -->
-    <h2 style="text-align: center;">For more insane guild nonsense check out this playlist</h2>
-    <div style="text-align: center;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLQSakYhtclMZDhF6Kf2zL1f9cfXY1U3z5" 
-        title="YouTube Playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
+  <section id="tools">
+    <h2>Desktop tools</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>LinguaForge</h3>
+        <p class="what">Desktop app</p>
+        <p class="desc">Transcribes and translates videos into subtitles, then muxes them into the video. Offline and GPU-accelerated with Whisper, FFmpeg and MKVToolNix. Made for local nerds who want subtitles done fast, clean, and offline.</p>
+        <ul class="chips"><li>Windows</li><li>Python</li><li class="free">Free software · GPL-3.0</li></ul>
+        <div class="links">
+          <a class="primary" href="https://github.com/wendsell/linguaforge">GitHub</a>
+        </div>
+      </article>
     </div>
-</div>
+  </section>
+
+  <section id="wow">
+    <h2>World of Warcraft</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Core Loot Manager, color-blind edition</h3>
+        <p class="what">Addon fork</p>
+        <p class="desc">A fork of <a href="https://github.com/ClassicLootManager/ClassicLootManager">Core Loot Manager</a>, the guild loot tracking and awarding addon (DKP, EPGP, SK), with color-blind-safe bidding.</p>
+        <ul class="chips"><li>WoW addon</li><li>Lua</li><li class="free">Free software · Apache-2.0</li></ul>
+        <div class="links">
+          <a class="primary" href="https://github.com/wendsell/CoreLootManager-COLOR-BLIND-">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="fun">
+    <h2>Just for fun</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>dognamnit</h3>
+        <p class="what">Web toy</p>
+        <p class="desc">Hot Dog Builder Pro™, IBFR Certified Edition. A cursed and vibe coded hot dog generator.</p>
+        <ul class="chips"><li>Web</li><li>HTML &amp; CSS</li></ul>
+        <div class="links">
+          <a class="primary" href="https://wendsell.github.io/dognamnit/">Build a hot dog</a>
+          <a href="https://github.com/wendsell/dognamnit">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
 
 <footer>
-    <p class="footer-text">Wendsell with Two L's</p>
+  <div class="wrap">
+    <a href="https://github.com/wendsell">github.com/wendsell</a>
+  </div>
 </footer>
-
-<script>
-    const audioPlayer = document.getElementById('audioPlayer');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const timeline = document.getElementById('timeline');
-    const timelineFill = document.getElementById('timelineFill');
-    const timeDisplay = document.getElementById('timeDisplay');
-
-    // Play/Pause Toggle
-    playPauseBtn.addEventListener('click', () => {
-        if (audioPlayer.paused) {
-            audioPlayer.play();
-            playPauseBtn.textContent = 'Pause';
-        } else {
-            audioPlayer.pause();
-            playPauseBtn.textContent = 'Play';
-        }
-    });
-
-    // Update Timeline and Time Display
-    audioPlayer.addEventListener('timeupdate', () => {
-        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-        timelineFill.style.width = `${progress}%`;
-
-        const currentTime = formatTime(audioPlayer.currentTime);
-        const duration = formatTime(audioPlayer.duration);
-        timeDisplay.textContent = `${currentTime} / ${duration}`;
-    });
-
-    // Timeline Click
-    timeline.addEventListener('click', (e) => {
-        const timelineWidth = timeline.offsetWidth;
-        const clickX = e.offsetX;
-        const duration = audioPlayer.duration;
-
-        audioPlayer.currentTime = (clickX / timelineWidth) * duration;
-    });
-
-    // Format Time Function
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-    }
-</script>
 
 </body>
 </html>
